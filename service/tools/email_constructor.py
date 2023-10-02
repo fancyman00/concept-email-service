@@ -35,11 +35,11 @@ def order_constructor(item: Order):
       <head></head>
       <body>
         <h2>Новый заказ</h2>
-        <div><h4>Имя: </h4>{item.name}</div>
-        <div><h4>Фамилия: </h4>{item.surname}</div>
-        <div><h4>Телефон: </h4>{item.phone}</div>
-        <div><h4>Электронная почта: </h4>{item.mail}</div>
-        <div><h4>Заказ: </h4><br/>{products}</div>
+        <h4>Имя: {item.name}</h4>
+        <h4>Фамилия: {item.surname}</h4>
+        <h4>Телефон: {item.phone}</h4>
+        <h4>Электронная почта: {item.mail}</h4>
+        <h4>Заказ: <h5>{products}</h5></h4>
       </body>
     </html>
     """.format(item=item, products=products), subtype='html')

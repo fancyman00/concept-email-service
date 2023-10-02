@@ -8,6 +8,6 @@ def error_wrapper(func):
         try:
             return func(*args, **kwargs)
         except Exception as error:
-            print("Error: " + error)
+            print("Error: " + str(error))
             return HTTPException(status_code=400, detail=error)
     return wrapper

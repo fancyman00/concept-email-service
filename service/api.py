@@ -1,7 +1,6 @@
 from service.controller import EmailController
-
-from service.model import Message
-from tools.decorators import error_wrapper
+from service.model import Message, Order
+from service.tools.decorators import error_wrapper
 
 
 class EmailApi:
@@ -9,12 +8,12 @@ class EmailApi:
         self.app = app
         self.service = controller
 
-        @self.app.get("/")
-        def read_root():
-            return {"Hello": "World"}
-
         @self.app.put("/send")
         @error_wrapper
-        def send_mail(data: Message):
-            print("Send email to: " + data.email)
+        def send_message_mail(data: Message):
             controller.send_message_email(data)
+
+        @self.app.put("/order")
+        @error_wrapper
+        def send_order_mail(data: Order):
+            controller.send_order_email(data)

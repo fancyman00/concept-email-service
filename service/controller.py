@@ -1,8 +1,6 @@
-from email.mime.multipart import MIMEMultipart
-
-from service.model import Message
-from smtp.email import EmailService
-from tools.email_constructor import message_constructor
+from service.smtp.email import EmailService
+from service.model import Message, Order
+from service.tools.email_constructor import message_constructor, order_constructor
 
 
 class EmailController:
@@ -13,4 +11,8 @@ class EmailController:
 
     def send_message_email(self, item: Message):
         msg = message_constructor(item)
+        self.__service.send_email(self.__sender_email, self.__receiver_email, msg.as_string())
+
+    def send_order_email(self, item: Order):
+        msg = order_constructor(item)
         self.__service.send_email(self.__sender_email, self.__receiver_email, msg.as_string())
